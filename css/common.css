@@ -1,0 +1,297 @@
+@charset "UTF-8";
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ol,
+li,
+ul,
+dl,
+dt,
+dd {
+    list-style: none;
+}
+
+.z {
+    float: left;
+}
+
+.y {
+    float: right;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /* 解决IOS默认滑动很卡的情况 */
+    -webkit-overflow-scrolling: touch;
+    /* 1rem = 100px */
+    font-size: calc(100vw/7.5);
+}
+
+body {
+    font-size: .24rem;
+}
+
+
+/* 禁止缩放表单 */
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input {
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+
+/* 取消链接高亮  */
+
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* 设置HTML5元素为块 */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+
+/* 图片自适应 */
+
+img {
+    width: 100%;
+    height: auto;
+    width: auto\9;
+    /* ie8 */
+    -ms-interpolation-mode: bicubic;
+    /*为了照顾ie图片缩放失真*/
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+textarea {
+    resize: none;
+    /*禁用了文本的拖拉，尤其在谷歌下*/
+}
+
+p {
+    word-wrap: break-word;
+    /* 不够的单词自动换行 而不会被截掉 */
+}
+
+.cl:after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+
+.cl {
+    zoom: 1;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Microsoft YaHei', Tahoma, Arial, sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-family: 'Microsoft YaHei';
+}
+
+img {
+    border: none;
+}
+
+input,
+input:active {
+    font-family: 'Microsoft YaHei';
+    outline: none;
+}
+
+
+/*单行溢出*/
+
+.omit {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/*多行溢出 手机端使用*/
+
+.txt-cut {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 2; */
+    -webkit-box-orient: vertical;
+}
+
+
+/* 移动端点击a链接出现蓝色背景问题解决 */
+
+a:link,
+a:active,
+a:visited,
+a:hover {
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.oh {
+    overflow: hidden;
+}
+
+.fixed {
+    position: fixed!important;
+    top: 0;
+    left: 0;
+}
+
+.block {
+    display: block!important;
+}
