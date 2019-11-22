@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    canvas{
+        border:1px solid #111;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400">
+        不支持canvas
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = '';
+        ctx = canvas.getContext('2d');
+
+        var dirt = 25;
+        var dirtY = 25;
+        var vx = 3;
+        var vy = 2;
+
+        gameStart();
+        function gameStart() {
+            ctx.clearRect(0, 0, 600, 400);
+            ctx.beginPath();
+            if (dirt + 25 >= canvas.width || dirt < 25) {
+                vx = -vx;
+            }
+            if(dirtY + 25 >= canvas.height ||dirtY < 25){
+                vy = -vy;
+            }
+            dirt = dirt + vx;
+            dirtY = dirtY + vy;
+            ctx.arc(dirt, dirtY,25,0,2*Math.PI,25);
+            ctx.fill();
+            requestAnimationFrame(gameStart);
+        }
+    </script>
+</body>
+
+</html>

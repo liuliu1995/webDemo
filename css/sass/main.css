@@ -1,0 +1,188 @@
+@charset "UTF-8";
+/* 初始化样式 begin */
+html {
+  font-size: 62.5%;
+}
+
+body, div, span, a, ul, ol, li, p, label, h1, h2, h3, h4, h5, h6, form, fieldset, table, th, td, img, input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  word-break: break-all;
+  cursor: default;
+}
+
+body {
+  background-color: #fff;
+  font: 1.2rem "微软雅黑","宋体";
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  border: 0;
+  outline: none;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+textarea, input, select {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+input, button, input[type=checkbox]:focus, input[type=radio]:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.none {
+  display: none;
+}
+
+.cl:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.cl {
+  zoom: 1;
+}
+
+.z {
+  float: left;
+}
+
+.y {
+  float: right;
+}
+
+.oh {
+  overflow: hidden;
+}
+
+.wp100 {
+  width: 100%;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* 初始化样式 end */
+/* cubeShow_01 begin */
+.demo {
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  position: relative;
+  margin: 85px auto;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  position: absolute;
+  animation: autoRotate ease 18s alternate infinite;
+}
+
+@keyframes autoRotate {
+  0%,
+  100% {
+    transform: translateZ(-150px);
+  }
+  16.5% {
+    transform: translateZ(-150px) rotateX(-180deg);
+  }
+  33% {
+    transform: translateZ(-150px) rotateY(90deg);
+  }
+  49.5% {
+    transform: translateZ(-150px) rotateY(-90deg);
+  }
+  66% {
+    transform: translateZ(-150px) rotateX(-90deg);
+  }
+  82.5% {
+    transform: translateZ(-150px) rotateX(90deg);
+  }
+}
+
+.cube-face {
+  border: 2px solid #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.9;
+  backface-visibility: visible;
+}
+
+.cube-face.is-front {
+  background: -webkit-linear-gradient(left, #014289, #006faf);
+  background: -moz-linear-gradient(right, #014289, #006faf);
+  background: linear-gradient(to right, #014289, #006faf);
+  transform: translateZ(150px);
+}
+
+.cube-face.is-back {
+  background: -webkit-linear-gradient(left, #009ac0, #00ccbc);
+  background: -moz-linear-gradient(right, #009ac0, #00ccbc);
+  background: linear-gradient(to right, #009ac0, #00ccbc);
+  transform: rotateX(-180deg) translateZ(150px);
+}
+
+.cube-face.is-right {
+  background: -webkit-linear-gradient(left, #006faf, #009ac0);
+  background: -moz-linear-gradient(right, #006faf, #009ac0);
+  background: linear-gradient(to right, #006faf, #009ac0);
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.cube-face.is-left {
+  background: -webkit-linear-gradient(left, #00ccbc, #014289);
+  background: -moz-linear-gradient(right, #00ccbc, #014289);
+  background: linear-gradient(to right, #00ccbc, #014289);
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+.cube-face.is-top {
+  background: -webkit-linear-gradient(left, #00ccbc, #60f3ab);
+  background: -moz-linear-gradient(right, #00ccbc, #60f3ab);
+  background: linear-gradient(to right, #00ccbc, #60f3ab);
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.cube-face.is-bottom {
+  background: -webkit-linear-gradient(left, #60f3ab, #00ccbc);
+  background: -moz-linear-gradient(right, #60f3ab, #00ccbc);
+  background: linear-gradient(to right, #60f3ab, #00ccbc);
+  transform: rotateX(-90deg) translateZ(150px);
+}
+
+/* cubeShow_01 end */
