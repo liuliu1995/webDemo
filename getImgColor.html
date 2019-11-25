@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <img src="img/banner1.png" id="img1">
     <script>
         (() => {
             var imgList = [
@@ -23,11 +24,11 @@
                 var context = canvas.getContext('2d')
                 img.onload = function() {
                     console.log(img.width, img.height)
-                    canvas.width = img.width
-                    canvas.height = img.height
-                    context.drawImage(img, 0, 0, img.width, img.height)
+                        // canvas.width = img.width
+                        // canvas.height = img.height
+                    context.drawImage(img, 0, 0)
                         // 获取像素数据
-                    let data = context.getImageData(0, 0, img.width, img.height).data
+                    let data = context.getImageData(0, 0, canvas.width, canvas.height).data
                     console.log(data);
                     let r = 0,
                         g = 0,
@@ -54,7 +55,7 @@
                     const color = ((r << 16) | (g << 8) | b).toString(16)
                     return color
                 }
-            }
+            };
             for (var i = 0; i < imgList.length; i++) {
                 getImgColor(imgList[i]);
             }
