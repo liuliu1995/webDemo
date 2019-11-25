@@ -15,25 +15,24 @@
 </head>
 
 <body>
-    <img src="http://liublog.gitee.io/testres/banner1.png" class="banner">
-    <img src="http://liublog.gitee.io/testres/banner2.png" class="banner">
-    <img src="http://liublog.gitee.io/testres/banner3.png" class="banner">
-    <img src="http://liublog.gitee.io/testres/banner4.jpg" class="banner">
-    <img src="http://liublog.gitee.io/testres/banner5.jpg" class="banner">
-    <img src="http://liublog.gitee.io/testres/banner6.jpg" class="banner">
     <script>
         (() => {
+            var imgList = [
+                "http://liublog.gitee.io/testres/banner1.png", "http://liublog.gitee.io/testres/banner2.png", "http://liublog.gitee.io/testres/banner3.png",
+                "http://liublog.gitee.io/testres/banner4.jpg", "http://liublog.gitee.io/testres/banner5.jpg", "http://liublog.gitee.io/testres/banner6.jpg"
+            ]
+
             function getImgColor(img) {
                 var canvas = document.createElement('canvas');
                 var context = canvas.getContext('2d');
-                console.log(img.width, img.height);
+                // console.log(img.width, img.height);
                 canvas.width = img.width
                 canvas.height = img.height
                 context.drawImage(img, 0, 0)
                     // 获取像素数据
                 let data = context.getImageData(0, 0, canvas.width, canvas.height).data
-                console.log(data);
-                // 取所有像素的平均值
+                    // console.log(data);
+                    // 取所有像素的平均值
                 let r = 0,
                     g = 0,
                     b = 0
@@ -57,17 +56,17 @@
 
                 //rgb转16进制 位运算
                 const color = ((r << 16) | (g << 8) | b).toString(16)
-                console.log(color);
                 return color
             };
             let colorList = [];
-            let imgDom = document.querySelectorAll(".banner")
-            console.log(imgDom);
-            for (var i = 0; i < imgDom.length; i++) {
-                console.log(imgDom[i]);
-                let mainColor = getImgColor(imgDom[i]);
-                console.log(mainColor);
-                colorList.push(mainColor);
+            for (var i = 0; i < imgList.length; i++) {
+                var img = new Image();
+                img.src = imgList[i];
+                img.onload = function() {
+                    let mainColor = getImgColor(img);
+                    console.log(mainColor);
+                    colorList.push(mainColor);
+                }
             }
         })()
     </script>
