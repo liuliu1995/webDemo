@@ -62,15 +62,11 @@
             for (var i = 0; i < imgList.length; i++) {
                 var img = new Image();
                 img.src = imgList[i];
-                img.onload = function() {
-                    let mainColor = getImgColor(img);
-                    console.log(mainColor);
-                    colorList.push(mainColor);
-                }
+                let mainColor = getImgColor(img);
+                console.log(mainColor);
+                colorList.push(mainColor);
             }
-            setTimeout(() => {
-                console.log(colorList);
-            }, 1000)
+            console.log(colorList);
         })()
     </script>
 </body>
