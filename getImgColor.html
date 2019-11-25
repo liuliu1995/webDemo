@@ -30,7 +30,7 @@
                 "http://liublog.gitee.io/testres/banner4.jpg", "http://liublog.gitee.io/testres/banner5.jpg", "http://liublog.gitee.io/testres/banner6.jpg"
             ]
 
-            function getImgColor(img) {
+            function getImgColor(canvas, img) {
                 var context = canvas.getContext('2d');
                 context.drawImage(img, 0, 0);
                 // 获取像素数据
