@@ -61,8 +61,8 @@
             let colorList = [];
             for (var i = 0; i < imgList.length; i++) {
                 var img = new Image();
-                img.src = imgList[i];
                 img.onload = function() {
+                    img.src = imgList[i];
                     let mainColor = getImgColor(img);
                     console.log(mainColor);
                     colorList.push(mainColor);
