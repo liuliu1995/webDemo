@@ -59,14 +59,20 @@
                 return color
             };
             let colorList = [];
-            var img = new Image();
+            let imgDomList = [];
             for (var i = 0; i < imgList.length; i++) {
+                var img = new Image();
                 img.src = imgList[i];
-                let mainColor = getImgColor(img);
+                imgDomList.push(img);
+            }
+            for (var j = 0; j < imgDomList.length; j++) {
+                // img.onload = function() {
+
+                // }
+                let mainColor = getImgColor(imgDomList[j]);
                 console.log(mainColor);
                 colorList.push(mainColor);
             }
-            console.log(colorList);
         })()
     </script>
 </body>
