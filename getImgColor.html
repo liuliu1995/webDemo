@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,17 +33,42 @@
                     context.drawImage(img, 0, 0)
                         // 获取像素数据
                     let data = context.getImageData(0, 0, canvas.width, canvas.height).data
-                    console.log(data);
-
-                    // return color
+                    var r = 1,
+                        g = 1,
+                        b = 1;
+                    // 取所有像素的平均值
+                    for (var row = 0; row < img.height; row++) {
+                        for (var col = 0; col < img.width; col++) {
+                            if (row == 0) {
+                                r += data[((img.width * row) + col)];
+                                g += data[((img.width * row) + col) + 1];
+                                b += data[((img.width * row) + col) + 2];
+                            } else {
+                                r += data[((img.width * row) + col) * 4];
+                                g += data[((img.width * row) + col) * 4 + 1];
+                                b += data[((img.width * row) + col) * 4 + 2];
+                            }
+                        }
+                    }
+                    console.log(r, g, b)
+                        // 求取平均值 
+                    r /= (img.width * img.height);
+                    g /= (img.width * img.height);
+                    b /= (img.width * img.height);
+                    // 将最终的值取整
+                    r = Math.round(r);
+                    g = Math.round(g);
+                    b = Math.round(b);
+                    console.log(r, g, b)
+                    return "rgb(" + r + "," + g + "," + b + ")";
                 }
             };
             let colorList = [];
             for (var i = 0; i < imgList.length; i++) {
-                getImgColor(imgList[i])
-                    // colorList.push();
+                let mainColor = getImgColor(imgList[i])
+                colorList.push(mainColor);
             }
-            // console.log(colorList);
+            console.log(colorList);
         })()
     </script>
 </body>
