@@ -15,6 +15,14 @@
 </head>
 
 <body>
+    <canvas width="0" height="0" id="mycanvas">
+        <img src="http://liublog.gitee.io/testres/banner1.png" class="imgs">
+        <img src="http://liublog.gitee.io/testres/banner2.png" class="imgs">
+        <img src="http://liublog.gitee.io/testres/banner3.png" class="imgs">
+        <img src="http://liublog.gitee.io/testres/banner4.jpg" class="imgs">
+        <img src="http://liublog.gitee.io/testres/banner5.jpg" class="imgs">
+        <img src="http://liublog.gitee.io/testres/banner6.jpg" class="imgs">
+    </canvas>
     <script>
         (() => {
             var imgList = [
@@ -22,24 +30,17 @@
                 "http://liublog.gitee.io/testres/banner4.jpg", "http://liublog.gitee.io/testres/banner5.jpg", "http://liublog.gitee.io/testres/banner6.jpg"
             ]
 
-            function getImgColor(imgUrl) {
-                var img = new Image();
-                img.src = imgUrl;
-
-                var canvas = document.createElement('canvas');
-                var context = canvas.getContext('2d');
-                // console.log(img.width, img.height);
-                canvas.width = img.width
-                canvas.height = img.height
-                context.drawImage(img, 0, 0)
-                    // 获取像素数据
-                let data = context.getImageData(0, 0, canvas.width, canvas.height).data
-                    // console.log(data);
-                    // 取所有像素的平均值
+            function getImgColor(img) {
+                console.log(img.width, img.height);
+                context.drawImage(img, 0, 0);
+                // 获取像素数据
+                let data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+                // console.log(data)
+                // 取所有像素的平均值
                 let r = 0,
                     g = 0,
-                    b = 0
-                    // 取所有像素的平均值
+                    b = 0;
+                // 取所有像素的平均值
                 for (let row = 0; row < img.height; row++) {
                     for (let col = 0; col < img.width; col++) {
                         r += data[(img.width * row + col) * 4]
@@ -65,8 +66,12 @@
                 // }
             };
             let colorList = [];
-            for (var i = 0; i < imgList.length; i++) {
-                let mainColor = getImgColor(imgList[i]);
+            var imgs = document.querySelectorAll(".imgs");
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            for (var i = 0; i < imgs.length; i++) {
+                let img = imgs[i];
+                let mainColor = getImgColor(canvas, img);
                 console.log(mainColor);
                 colorList.push(mainColor);
             }
