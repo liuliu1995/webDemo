@@ -28,11 +28,13 @@
                 var canvas = document.createElement('canvas');
                 var context = canvas.getContext('2d')
                 img.onload = function() {
-                    // canvas.width = img.width
-                    // canvas.height = img.height
+                    console.log(img.width, img.height);
+                    canvas.width = img.width
+                    canvas.height = img.height
                     context.drawImage(img, 0, 0)
                         // 获取像素数据
                     let data = context.getImageData(0, 0, canvas.width, canvas.height).data
+                    console.log(data);
                     var r = 1,
                         g = 1,
                         b = 1;
