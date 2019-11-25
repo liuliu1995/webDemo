@@ -59,8 +59,8 @@
                 return color
             };
             let colorList = [];
+            var img = new Image();
             for (var i = 0; i < imgList.length; i++) {
-                var img = new Image();
                 img.src = imgList[i];
                 let mainColor = getImgColor(img);
                 console.log(mainColor);
