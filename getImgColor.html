@@ -32,6 +32,7 @@
 
             function getImgColor(img) {
                 console.log(img.width, img.height);
+                var context = canvas.getContext('2d');
                 context.drawImage(img, 0, 0);
                 // 获取像素数据
                 let data = context.getImageData(0, 0, canvas.width, canvas.height).data;
@@ -68,7 +69,6 @@
             let colorList = [];
             var imgs = document.querySelectorAll(".imgs");
             var canvas = document.getElementById('myCanvas');
-            var context = canvas.getContext('2d');
             for (var i = 0; i < imgs.length; i++) {
                 let img = imgs[i];
                 let mainColor = getImgColor(canvas, img);
