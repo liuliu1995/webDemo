@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        (() => {
+            var imgList = [
+                "http://liublog.gitee.io/testres/banner1.png", "http://liublog.gitee.io/testres/banner2.png", "http://liublog.gitee.io/testres/banner3.png",
+                "http://liublog.gitee.io/testres/banner4.jpg", "http://liublog.gitee.io/testres/banner5.jpg", "http://liublog.gitee.io/testres/banner6.jpg"
+            ]
+
+            function getImgColor(imgUrl) {
+                var img = new Image();
+                img.src = imgUrl;
+                var canvas = document.createElement('canvas');
+                var context = canvas.getContext('2d')
+                img.onload = function() {
+                    console.log(img.width, img.height)
+                    canvas.width = img.width
+                    canvas.height = img.height
+                    context.drawImage(img, 0, 0, img.width, img.height)
+                        // 获取像素数据
+                    let data = context.getImageData(0, 0, img.width, img.height).data
+                    console.log(data);
+                    let r = 0,
+                        g = 0,
+                        b = 0
+                        // 取所有像素的平均值
+                    for (let row = 0; row < img.height; row++) {
+                        for (let col = 0; col < img.width; col++) {
+                            r += data[(img.width * row + col) * 4]
+                            g += data[(img.width * row + col) * 4 + 1]
+                            b += data[(img.width * row + col) * 4 + 2]
+                        }
+                    }
+                    // 求取平均值
+                    r /= img.width * img.height
+                    g /= img.width * img.height
+                    b /= img.width * img.height
+
+                    // 将最终的值取整
+                    r = Math.round(r)
+                    g = Math.round(g)
+                    b = Math.round(b)
+
+                    //rgb转16进制 位运算
+                    const color = ((r << 16) | (g << 8) | b).toString(16)
+                    return color
+                }
+            }
+            for (var i = 0; i < imgList.length; i++) {
+                getImgColor(imgList[i]);
+            }
+        })()
+    </script>
+</body>
+
+</html>

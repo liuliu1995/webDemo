@@ -50,6 +50,12 @@
             function textBecomeImg(text, fontsize, fontcolor) {
                 var canvas = document.createElement('canvas');
                 $buHeight = 28;
+                if (text.length == 4) {
+                    $buHeight = 32
+                }
+                if (text.length == 5) {
+                    $buHeight = 39
+                }
                 canvas.height = fontsize + $buHeight;
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -57,17 +63,17 @@
                 context.font = fontsize + "px Arial";
                 context.textBaseline = 'middle';
                 context.rotate(Math.PI / 6);
-                context.fillText(text, 0, (fontsize / 2) + 28)
-                canvas.width = context.measureText(text).width + 15;
+                context.fillText(text, 0, (fontsize / 2) + $buHeight)
+                canvas.width = context.measureText(text).width + $buHeight / 2;
                 context.fillStyle = fontcolor;
                 context.font = fontsize + "px Arial";
                 context.textBaseline = 'middle';
                 context.rotate(-Math.PI / 6);
-                context.fillText(text, 0, (fontsize / 2) + 28);
+                context.fillText(text, 0, (fontsize / 2) + $buHeight);
                 var dataUrl = canvas.toDataURL('image/png'); //注意这里背景透明的话，需要使用png
                 return dataUrl;
             }
-            var url = textBecomeImg('布里茨', 16, '#333');
+            var url = textBecomeImg('布里茨', 14, '#333');
             $("body").css({
                 'background': 'url(' + url + ') -5px 10px repeat'
             })
